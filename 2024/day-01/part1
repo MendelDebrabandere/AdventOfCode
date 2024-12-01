@@ -2,16 +2,17 @@
 
 inputfile=$1
 
-cat $1
+cat "$inputfile"
 
 # init the 2 arrays of data
 array1=()
 array2=()
 
-while read -r line; do
-	array1+=("$(echo $line | cut -d ' ' -f 1)")
-	array2+=("$(echo $line | cut -d ' ' -f 2)")
-done < $inputfile
+mapfile -t array1 < <(cut -d ' ' -f 1 "$inputfile")
+mapfile -t array2 < <(cut -d ' ' -f 4 "$inputfile")
+echo "${array1[@]}"
+echo "${array2[@]}"
+
 
 
 distanceSum=0
@@ -26,8 +27,8 @@ while [[ ${#array1[@]} -gt 0 ]]; do
 
 
 	# debug print array
-	echo ${array1[@]}
-	echo ${array2[@]}
+	echo "${array1[@]}"
+	echo "${array2[@]}"
 
 	# get the lowest value item in each array
 	for (( idx = 0; idx < ${#array1[@]}; ++idx )); do
@@ -46,14 +47,14 @@ while [[ ${#array1[@]} -gt 0 ]]; do
 
 	
 	# debug output
-	echo lowest item from arr1: $lowestItem1
-	echo lowest item from arr2: $lowestItem2
+	echo lowest item from arr1: "$lowestItem1"
+	echo lowest item from arr2: "$lowestItem2"
 
 	echo distance sum: $distanceSum
 
 	# remove those elemets from their arrays
-	unset array1[$lowestItemIdx1]
-	unset array2[$lowestItemIdx2]
+	unset "array1[$lowestItemIdx1]"
+	unset "array2[$lowestItemIdx2]"
 
     # Rebuild the arrays without the unset elements
     array1=("${array1[@]}")
