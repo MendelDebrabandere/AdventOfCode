@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=part2
+comment1.params=
+comment1.target=part2()
+comment2.params=
+comment2.target=void\ solvePart2()
+comment3.params=reader
+comment3.target=void\ solvePart2(java.util.Scanner)
+comment4.params=intArray
+comment4.target=boolean\ isLineSafe(java.util.ArrayList)
+numComments=5
