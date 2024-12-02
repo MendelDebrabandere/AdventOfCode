@@ -3,21 +3,25 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.ArrayList; 
 
-public class part2
+public class Solver
 {
     
     private Scanner myReader;
 
-    public part2()
+    public Solver()
     { }    
 
-    public void solvePart2()
+    public void solve(boolean part1)
     {
         try
         {
             File myObj = new File("input.txt");
             myReader = new Scanner(myObj);
-            solvePart2(myReader);
+            if (part1) {
+                solvePart1(myReader);
+            } else {
+                solvePart2(myReader);
+            }
             myReader.close(); 
         }
         catch (FileNotFoundException e)
@@ -26,6 +30,29 @@ public class part2
             e.printStackTrace();
         }
     }    
+    
+    private void solvePart1(Scanner reader)
+    {
+        int safeAmount = 0;
+        
+        while (myReader.hasNextLine())
+        {
+            String line = myReader.nextLine();
+            System.out.println(line);
+            String[] strNumberArr = line.split(" ");
+            ArrayList<Integer> numbersArr = new ArrayList();
+            for (String strNumber : strNumberArr)
+            {
+                numbersArr.add(Integer.valueOf(strNumber));
+            }
+            
+            if (isLineSafe(numbersArr)) {
+                safeAmount += 1;
+            }
+        }
+        
+        System.out.println(safeAmount);
+    }
     
     private void solvePart2(Scanner reader)
     {
