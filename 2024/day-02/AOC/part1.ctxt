@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=part1
-comment1.params=
-comment1.target=part1()
-comment2.params=
-comment2.target=void\ solvePart1()
-comment3.params=reader
-comment3.target=void\ solvePart1(java.util.Scanner)
-numComments=4
