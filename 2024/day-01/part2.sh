@@ -10,14 +10,9 @@ array2=()
 
 mapfile -t array1 < <(cut -d ' ' -f 1 "$inputfile")
 mapfile -t array2 < <(cut -d ' ' -f 4 "$inputfile")
-echo "${array1[@]}"
-echo "${array2[@]}"
-
 
 
 similarityScore=0
-
-
 
 for item1 in "${array1[@]}"; do 
 	
